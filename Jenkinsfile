@@ -1,6 +1,6 @@
 pipeline
 {
-agent { label 'docker'}
+agent { label 'mypc'}
 
    tools {
       maven 'maven'
