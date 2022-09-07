@@ -1,13 +1,15 @@
 pipeline
 {
-agent any
+agent {
+    docker {image'node:16-alpine'}
+}
 
 stages {
     stage('Build')
 	{
 		steps
 		{
-			sh 'mvn clean'
+			sh 'node -v'
 		}
 	}
 	stage('Depoly to QA')
