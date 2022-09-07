@@ -3,7 +3,7 @@ pipeline
 agent { label 'mypc'}
 
    tools {
-      maven 'maven'
+      maven 'Maven 3.8.6'
       jdk 'JDK 1.8'
     }
 
