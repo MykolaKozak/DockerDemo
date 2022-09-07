@@ -2,6 +2,11 @@ pipeline
 {
 agent { label 'mypc'}
 
+   tools {
+      maven 'MAVEN_HOME'
+      jdk 'JAVA_HOME'
+    }
+
 stages {
     stage('Build')
 	{
