@@ -3,8 +3,8 @@ pipeline
 agent { label 'mypc'}
 
    tools {
-      maven 'MAVEN_HOME'
-      jdk 'JAVA_HOME'
+      maven 'maven'
+      jdk 'JDK 1.8'
     }
 
 stages {
