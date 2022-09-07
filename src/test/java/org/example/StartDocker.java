@@ -16,13 +16,11 @@ public class StartDocker {
     private boolean isDockerUp = false;
     private final int waitTime = 20;
     private final String dockerUp = "dockerUp.bat";
-    private final String dockerFile = "myjenkins.bat";
     private final String dockerDown = "dockerDown.bat";
     private final String dockerChromeScale = "dockerScaleChrome.bat";
 
     @BeforeSuite
     public void startFile() throws IOException {
-        runFile(dockerFile);
         runFile(dockerUp);
         waitForDockerIsUp(waitTime);
         runFile(dockerChromeScale);
