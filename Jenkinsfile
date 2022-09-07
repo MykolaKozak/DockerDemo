@@ -1,6 +1,6 @@
 pipeline
 {
-agent 'mypc'
+agent { label 'mypc'}
 
 stages {
     stage('Build')
