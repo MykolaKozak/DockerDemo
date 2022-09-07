@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts-jdk11
+FROM jenkins/jenkins:lts-jdk8
 USER root
 RUN apt update && \
     apt install -y --no-install-recommends gnupg curl ca-certificates apt-transport-https && \
