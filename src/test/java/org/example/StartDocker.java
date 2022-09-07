@@ -23,10 +23,10 @@ public class StartDocker {
     @BeforeSuite
     public void startFile() throws IOException {
         runFile(dockerFile);
-//        runFile(dockerUp);
-//        waitForDockerIsUp(waitTime);
-//        runFile(dockerChromeScale);
-//        waitForSec(waitTime);
+        runFile(dockerUp);
+        waitForDockerIsUp(waitTime);
+        runFile(dockerChromeScale);
+        waitForSec(waitTime);
     }
 
     @AfterSuite
