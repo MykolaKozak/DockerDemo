@@ -7,7 +7,7 @@ stages {
 	{
 		steps
 		{
-			sh "clean"
+			sh 'mvn clean'
 		}
 	}
 	stage('Depoly to QA')
