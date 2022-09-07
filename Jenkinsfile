@@ -26,7 +26,7 @@ stages {
 	{
 		steps
 		{
-			sh "mvn test"
+			echo 'need to use: mvn test'
 		}
 	}
 	stage('Run Smoke UI tests')
