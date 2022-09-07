@@ -1,15 +1,14 @@
 pipeline
 {
-agent {
-    docker {image'node:16-alpine'}
-}
+agent { docker { image 'maven:3.8.6' } }
 
 stages {
     stage('Build')
 	{
 		steps
 		{
-			sh 'node -v'
+			sh 'mvn --v'
+			sh 'mvn clean install'
 		}
 	}
 	stage('Depoly to QA')
