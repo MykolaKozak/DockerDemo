@@ -32,7 +32,9 @@ stages
                                          }
                                  }
 
-                                                 stages('nn'){
+                            stage('step by step')
+                                                 {
+                                                 stages{
                                                         stage('Build')
                                                                       {
                                                                         steps
@@ -58,7 +60,7 @@ stages
                                                                                   sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml down'
                                                                                }
                                                         }             }
-
+                                                 }
                         }
                }
      }
