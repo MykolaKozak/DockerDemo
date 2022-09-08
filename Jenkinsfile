@@ -12,14 +12,14 @@ stages {
 	{
 		steps
 		{
-			sh 'mvn clean'
+			sh '/usr/local/bin/docker-compose -f ./Users/mykozak/Desktop/projects/SDET_projects/DockerTest/docker-compose.yaml'
 		}
 	}
 	stage('Depoly to QA')
 	{
 		steps
 		{
-			sh /usr/local/bin/docker-compose -f ./docker-compose/selenoid-docker-compose-local.yml --env-file ./docker-compose/.env.local down
+			echo 'depoly code to QA env'
 		}
 	}
 	stage('Run API tests')
