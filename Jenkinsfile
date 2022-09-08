@@ -12,7 +12,7 @@ stages {
 	{
 		steps
 		{
-			sh '/usr/local/bin/docker-compose-v1 run docker-compose -f docker-compose.yaml'
+			sh '/usr/local/bin/docker-compose-v1 -f /Users/mykozak/Desktop/projects/SDET_projects/DockerTest/dockerUp.bat'
 		}
 	}
 	stage('Depoly to QA')
