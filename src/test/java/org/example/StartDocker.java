@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -19,20 +21,20 @@ public class StartDocker {
     private final String dockerDown = "dockerDown.bat";
     private final String dockerChromeScale = "dockerScaleChrome.bat";
 
-//    @BeforeSuite
-//    public void startFile() throws IOException {
-//        runFile(dockerUp);
-//        waitForDockerIsUp(waitTime);
-//        runFile(dockerChromeScale);
-//        waitForSec(waitTime);
-//    }
-//
-//    @AfterSuite
-//    public void after() throws IOException {
-//        runFile(dockerDown);
-//        waitForSec(5);
-//        waitForDockerIsDown(waitTime);
-//    }
+    @BeforeSuite
+    public void startFile() throws IOException {
+        runFile(dockerUp);
+        waitForDockerIsUp(waitTime);
+        runFile(dockerChromeScale);
+        waitForSec(waitTime);
+    }
+
+    @AfterSuite
+    public void after() throws IOException {
+        runFile(dockerDown);
+        waitForSec(5);
+        waitForDockerIsDown(waitTime);
+    }
 
     private void runFile(String filePath) throws IOException {
 //Run from Windows
