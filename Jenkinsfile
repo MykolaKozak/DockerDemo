@@ -39,6 +39,7 @@ stages
                                                                       {
                                                                          steps
                                                                                {
+                                                                                 sh 'sleep 60'
                                                                                  echo '<<------ RUN TESTS ------>>'
                                                                                  sh "mvn clean"
                                                                                  sh "mvn test"
