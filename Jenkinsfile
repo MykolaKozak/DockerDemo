@@ -13,7 +13,6 @@ stages {
 		steps
 		{
 			sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt'
-			sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml scale chrome=5'
 		}
 	}
 	stage('Depoly to QA')
@@ -21,13 +20,14 @@ stages {
 		steps
 		{
 			echo 'depoly code to QA env'
+			sh 'mvn clean'
 		}
 	}
 	stage('Run UI tests')
 	{
 		steps
 		{
-			sh "mvn compile"
+			sh "mvn test"
 		}
 	}
 	stage('Docker down')
