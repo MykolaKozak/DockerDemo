@@ -31,8 +31,7 @@ stages
                                            sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml scale chrome=5'
                                          }
                                  }
-                            stage
-                                                 {
+
                                                  stages{
                                                         stage('Build')
                                                                       {
@@ -59,7 +58,7 @@ stages
                                                                                   sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml down'
                                                                                }
                                                         }             }
-                                                 }
+
                         }
                }
      }
