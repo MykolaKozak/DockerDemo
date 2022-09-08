@@ -13,6 +13,7 @@ stages {
 		steps
 		{
 			sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt'
+			sh '/usr/local/bin/docker-compose-v1 docker stack deploy'
 		}
 	}
 	stage('Depoly to QA')
