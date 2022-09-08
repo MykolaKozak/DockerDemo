@@ -10,7 +10,7 @@ agent { label 'mypc'}
 
 stages
       {
-         stage('Parallel Stage')
+         stage('Docker config')
                {
                   parallel
                          {
@@ -32,7 +32,7 @@ stages
                                          }
                                  }
 
-                            stage('step by step')
+                            stage('')
                                                  {
                                                  stages{
                                                         stage('Build')
