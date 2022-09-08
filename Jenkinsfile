@@ -8,11 +8,12 @@ agent { label 'mypc'}
     }
 
 stages {
-    stage('Build')
+    stage('Docker up')
 	{
 		steps
 		{
 			sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt'
+			sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml scale chrome=5'
 		}
 	}
 	stage('Depoly to QA')
@@ -22,25 +23,18 @@ stages {
 			echo 'depoly code to QA env'
 		}
 	}
-	stage('Run API tests')
-	{
-		steps
-		{
-			echo 'should mvn test'
-		}
-	}
-	stage('Run Smoke UI tests')
+	stage('Run UI tests')
 	{
 		steps
 		{
 			sh "mvn compile"
 		}
 	}
-	stage('Release to PROD')
+	stage('Docker down')
 	{
 		steps
 		{
-			echo 'release code'
+			sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml down'
 		}
 	}
     }
