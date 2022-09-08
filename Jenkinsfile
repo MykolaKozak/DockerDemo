@@ -35,20 +35,12 @@ stages
                             stage('Linked stages')
                                                  {
                                                  stages{
-                                                        stage('Build')
-                                                                      {
-                                                                        steps
-                                                                             {
-                                                                               sh 'sleep 60'
-                                                                               echo '<<------ Build ------>>'
-                                                                               sh "mvn clean"
-                                                                             }
-                                                                      }
                                                         stage('Run tests')
                                                                       {
                                                                          steps
                                                                                {
                                                                                  echo '<<------ RUN TESTS ------>>'
+                                                                                 sh "mvn clean"
                                                                                  sh "mvn test"
                                                                                }
                                                                       }
