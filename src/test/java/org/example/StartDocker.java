@@ -1,6 +1,8 @@
 package org.example;
 
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
@@ -31,7 +33,7 @@ public class StartDocker {
 //        waitForSec(5);
 //        waitForDockerIsDown(waitTime);
 //    }
-//
+
     private void runFile(String filePath) throws IOException {
 //Run from Windows
 //        Runtime runtime = Runtime.getRuntime();
@@ -89,16 +91,21 @@ public class StartDocker {
         }
     }
 
-    public RemoteWebDriver getDriver() {
+    public WebDriver getDriver() {
+        String seleniumGridUrl = "http://localhost:4444/wd/hub";
+        String browserName = "chrome";
+        Platform platform = Platform.WINDOWS;
 
         URL url = null;
         try {
-            url = new URL("http://localhost:4444/wd/hub");
+            url = new URL(seleniumGridUrl);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        //        FirefoxOptions capabilities = new FirefoxOptions();
-        ChromeOptions capabilities = new ChromeOptions();
-        return new RemoteWebDriver(url, capabilities);
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        desiredCapabilities.setBrowserName(browserName);
+        desiredCapabilities.setPlatform(platform);
+
+        return new RemoteWebDriver(url, desiredCapabilities);
     }
 }

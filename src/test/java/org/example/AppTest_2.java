@@ -1,6 +1,6 @@
 package org.example;
 
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 /**
@@ -12,7 +12,7 @@ public class AppTest_2 extends StartDocker {
      */
     @Test
     public void shouldAnswerWithTrue2() {
-        RemoteWebDriver driver = getDriver();
+        WebDriver driver = getDriver();
         driver.get("https://www.gmail.com/");
         System.out.println("Title: " + driver.getTitle());
     }
