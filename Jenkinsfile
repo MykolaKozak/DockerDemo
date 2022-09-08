@@ -30,35 +30,36 @@ stages
                                            echo '<<------ DOCKER CHROME SCALE UP ------>>'
                                            sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml scale chrome=5'
                                          }
-                                  }
-                            stages
-                                  {
-                                    stage('Build')
-                                                  {
-                                                    steps
-                                                         {
-                                                           sh 'sleep 60'
-                                                           echo '<<------ Build ------>>'
-                                                           sh "mvn clean"
-                                                         }
-                                                  }
-                                    stage('Run tests')
-                                                  {
-                                                     steps
-                                                           {
-                                                             echo '<<------ RUN TESTS ------>>'
-                                                             sh "mvn test"
-                                                           }
-                                                  }
-                                    stage('Docker down')
-                                                  {
-                                                    steps
-                                                           {
-                                                             echo '<<------ DOCKER DOWN ------>>'
-                                                              sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml down'
-                                                           }
-                                                  }
-                                  }
+                                 }
+                            stage
+                                 {
+                                 stages{
+                                        stage('Build')
+                                                      {
+                                                        steps
+                                                             {
+                                                               sh 'sleep 60'
+                                                               echo '<<------ Build ------>>'
+                                                               sh "mvn clean"
+                                                             }
+                                                      }
+                                        stage('Run tests')
+                                                      {
+                                                         steps
+                                                               {
+                                                                 echo '<<------ RUN TESTS ------>>'
+                                                                 sh "mvn test"
+                                                               }
+                                                      }
+                                        stage('Docker down')
+                                                      {
+                                                        steps
+                                                               {
+                                                                 echo '<<------ DOCKER DOWN ------>>'
+                                                                  sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml down'
+                                                               }
+                                        }             }
+                                 }
                         }
                }
      }
