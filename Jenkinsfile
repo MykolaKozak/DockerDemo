@@ -12,16 +12,9 @@ stages {
 	{
 		steps
 		{
-			sh 'mvn clean'
+			sh 'mvn clean install'
 		}
 	}
-		stage('Docker Up')
-    	{
-    		steps
-    		{
-    			echo 'depoly code to QA env'
-    		}
-    	}
 	stage('Depoly to QA')
 	{
 		steps
