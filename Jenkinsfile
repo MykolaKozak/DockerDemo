@@ -32,7 +32,7 @@ stages
                                          }
                                  }
 
-                                                 stages{
+                                                 stages('nn'){
                                                         stage('Build')
                                                                       {
                                                                         steps
