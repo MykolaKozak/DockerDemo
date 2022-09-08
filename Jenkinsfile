@@ -26,7 +26,7 @@ stages
                                  {
                                     steps
                                          {
-                                           sh 'sleep 40'
+                                           sh 'sleep 30'
                                            echo '<<------ DOCKER CHROME SCALE UP ------>>'
                                            sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml scale chrome=5'
                                          }
@@ -39,7 +39,7 @@ stages
                                                                       {
                                                                          steps
                                                                                {
-                                                                                 sh 'sleep 60'
+                                                                                 sh 'sleep 40'
                                                                                  echo '<<------ RUN TESTS ------>>'
                                                                                  sh "mvn clean"
                                                                                  sh "mvn test"
