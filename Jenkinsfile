@@ -17,7 +17,6 @@ stages {
                     {
                     echo '<<------ DOCKER UP ------>>'
                     sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt'
-                    sh 'sleep 40'
                     }
                 }
             stage('Docker chrome scale')
@@ -25,8 +24,8 @@ stages {
                  steps
                      {
                      echo '<<------ DOCKER CHROME SCALE UP ------>>'
+                      sh 'sleep 40'
                       sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml scale chrome=5'
-                      sh 'sleep 30'
                       }
                   }
             stage('Run tests')
@@ -34,6 +33,7 @@ stages {
                  steps
                      {
                       echo '<<------ RUN TESTS ------>>'
+                     sh 'sleep 60'
                      sh "mvn test"
                      }
                 }
