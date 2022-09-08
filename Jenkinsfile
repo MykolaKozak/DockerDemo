@@ -1,6 +1,6 @@
 pipeline
 {
-agent { label 'slave'}
+agent { label 'mypc'}
 
    tools {
       maven 'Maven 3.8.6'
