@@ -12,18 +12,14 @@ stages {
 	{
 		steps
 		{
-		    checkout scm
-            @docker.image('selenium/hub:latest').inside("-e COMPOSER_HOME=/tmp/jenkins-workspace")
-            {
-		      stage("Prepare folders") { sh "mkdir /tmp/jenkins-workspace"}
-             }
+			sh 'mvn clean'
 		}
-		}
+	}
 		stage('Docker Up')
     	{
     		steps
     		{
-    			sh 'docker-compose -f docker-compose.yaml up >>docker_log.txt'
+    			echo 'depoly code to QA env'
     		}
     	}
 	stage('Depoly to QA')
