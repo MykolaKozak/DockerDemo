@@ -19,7 +19,7 @@ stages {
 	{
 		steps
 		{
-			echo 'depoly code to QA env'
+			sh /usr/local/bin/docker-compose -f ./docker-compose/selenoid-docker-compose-local.yml --env-file ./docker-compose/.env.local down
 		}
 	}
 	stage('Run API tests')
