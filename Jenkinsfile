@@ -15,6 +15,13 @@ stages {
 			sh 'mvn clean'
 		}
 	}
+		stage('Docker Up')
+    	{
+    		steps
+    		{
+    			sh 'docker-compose -f docker-compose.yaml up >>docker_log.txt'
+    		}
+    	}
 	stage('Depoly to QA')
 	{
 		steps
