@@ -9,26 +9,28 @@ agent { label 'mypc'}
 
 stages {
  stage('Parallel Stage') {
- parallel {
-    stage('Docker up')
-	{
-		steps
-		{
-			echo '<<------ DOCKER UP ------>>'
-			sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt'
-		}
-	}
-	stage('Run tests')
-    	{
-    		steps
-    		{
-    			sh "mvn test"
-    		}
-    	}
-	}
-	}
-	stage('Depoly to QA')
-	{
+         parallel
+         {
+            stage('Docker up')
+                {
+                steps
+                    {
+                    echo '<<------ DOCKER UP ------>>'
+                    sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt'
+                    sh 'sleep 30'
+                    }
+                }
+            stage('Run tests')
+                {
+                 steps
+                     {
+                     sh "mvn test"
+                     }
+                }
+            }
+         }
+ stage('Depoly to QA')
+      {
 		steps
 		{
 			echo 'depoly code to QA env'
