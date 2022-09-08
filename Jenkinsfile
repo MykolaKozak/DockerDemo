@@ -34,12 +34,12 @@ stages
 
                             stage('Linked stages')
                                                  {
+                                                 steps{sh 'sleep 40'}
                                                  stages{
                                                         stage('Run tests')
                                                                       {
                                                                          steps
                                                                                {
-                                                                                 sh 'sleep 40'
                                                                                  echo '<<------ RUN TESTS ------>>'
                                                                                  sh "mvn clean"
                                                                                  sh "mvn test"
