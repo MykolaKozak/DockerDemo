@@ -12,7 +12,7 @@ stages {
 	{
 		steps
 		{
-			sh '/usr/local/bin/docker-compose -f docker -v'
+			sh '/usr/local/bin/docker-compose-v1 -f docker -v'
 		}
 	}
 	stage('Depoly to QA')
