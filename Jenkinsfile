@@ -13,7 +13,7 @@ stages {
 		steps
 		{
 		    checkout scm
-            docker.image('selenium/hub:latest').inside("-e COMPOSER_HOME=/tmp/jenkins-workspace")
+            @docker.image('selenium/hub:latest').inside("-e COMPOSER_HOME=/tmp/jenkins-workspace")
             {
 		      stage("Prepare folders") { sh "mkdir /tmp/jenkins-workspace"}
              }
