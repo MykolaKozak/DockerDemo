@@ -103,7 +103,7 @@ public class StartDocker {
         }
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setBrowserName(getProperty("browser"));
+        desiredCapabilities.setBrowserName(getProperty("browserName"));
         desiredCapabilities.setPlatform(Platform.valueOf(getProperty("platform")));
         desiredCapabilities.setCapability("pageLoadStrategy", PageLoadStrategy.NORMAL);
 
