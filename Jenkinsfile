@@ -33,18 +33,6 @@ stages
                                                                                  echo '<<------ Replace config ------>>'
                                                                                      script
                                                                                       {
-                                                                                       properties
-                                                                                       ([
-                                                                                        parameters
-                                                                                        ([
-                                                                                        choice
-                                                                                        (
-                                                                                               choices: ['chrome', 'firefox'],
-                                                                                               name: 'BROWSER_NAME'
-                                                                                         )
-                                                                                        ])
-
-                                                                                       ])
                                                                                       config = readFile "src/main/java/config/properties.properties"
                                                                                       newconfig = config.replaceAll("browserName=.*","browserName=${BROWSER_NAME}")
                                                                                       writeFile file: "src/main/java/config/properties.properties", text: "${newconfig}"
