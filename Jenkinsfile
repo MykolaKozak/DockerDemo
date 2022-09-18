@@ -19,7 +19,7 @@ stages
                                     steps
                                          {
                                           echo '<<------ DOCKER UP ------>>'
-                                          sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt --scale ${BROWSER_NAME}=5 -d'
+                                          sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt --scale ${BROWSER_NAME}={BROWSER_SCALE} -d'
                                          }
                                   }
                             stage('Linked stages')
