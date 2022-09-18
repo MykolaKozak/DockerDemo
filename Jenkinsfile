@@ -19,19 +19,9 @@ stages
                                     steps
                                          {
                                           echo '<<------ DOCKER UP ------>>'
-                                          sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt'
+                                          sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml up >>docker_log.txt --scale chrome=5 -d'
                                          }
                                   }
-                            stage('Docker chrome scale')
-                                 {
-                                    steps
-                                         {
-                                           sh 'sleep 30'
-                                           echo '<<------ DOCKER CHROME SCALE UP ------>>'
-                                           sh '/usr/local/bin/docker-compose-v1 -f docker-compose.yaml scale chrome=5'
-                                         }
-                                 }
-
                             stage('Linked stages')
                                                  {
                                                  stages{
