@@ -1,5 +1,6 @@
 package org.example;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -11,21 +12,20 @@ import org.testng.annotations.BeforeSuite;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.Objects;
 
 public class StartDocker {
     private final String lofFile = "docker_log.txt";
     private boolean isDockerUp = false;
-    private final int waitTime = 20;
+    private final int waitTime = 10;
     private final String dockerUp = "dockerUp.bat";
     private final String dockerDown = "dockerDown.bat";
     private final String dockerChromeScale = "dockerScaleChrome.bat";
 
     @BeforeSuite
     public void startFile() throws IOException {
-        runFile(dockerUp);
-        waitForDockerIsUp(waitTime);
-        runFile(dockerChromeScale);
+        runFile(dockerUp); // docker up and scale chrome = 5
         waitForSec(waitTime);
     }
 
@@ -37,12 +37,11 @@ public class StartDocker {
     }
 
     private void runFile(String filePath) throws IOException {
-//Run from Windows
-//        Runtime runtime = Runtime.getRuntime();
-//        runtime.exec("cmd /c start dockerUp.txt"); // run from Windows
+        //Run from Windows
+//      Runtime runtime = Runtime.getRuntime();
+//      runtime.exec("cmd /c start dockerUp.txt"); // run from Windows
 
-// Run from MAC
-//        String[] args = new String[]{"/bin/bash", "-c", "./dockerUp.bat"};
+        // Run from MAC
         String[] args = new String[]{"/bin/bash", "-c", "./".concat(filePath)};
         System.out.println("Run file: ".concat(filePath));
         new ProcessBuilder(args).start();
@@ -94,9 +93,10 @@ public class StartDocker {
     }
 
     public WebDriver getDriver() {
-        String seleniumGridUrl = "http://localhost:4444/wd/hub";
+        String seleniumGridUrl = "http://localhost:4444";
+
         String browserName = "chrome";
-        Platform platform = Platform.WINDOWS;
+        Platform platform = Platform.LINUX;
 
         URL url = null;
         try {
@@ -104,10 +104,15 @@ public class StartDocker {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setBrowserName(browserName);
         desiredCapabilities.setPlatform(platform);
+        desiredCapabilities.setCapability("pageLoadStrategy", PageLoadStrategy.NORMAL);
 
-        return new RemoteWebDriver(url, desiredCapabilities);
+        WebDriver driver = new RemoteWebDriver(url, desiredCapabilities);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(waitTime));
+        driver.manage().window().maximize();
+        return driver;
     }
 }
