@@ -1,4 +1,4 @@
-package org.example;
+package tests;
 
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.Platform;
@@ -14,6 +14,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Objects;
+
+import static config.PropertyReader.getProperty;
 
 public class StartDocker {
     private final String lofFile = "docker_log.txt";
@@ -93,21 +95,16 @@ public class StartDocker {
     }
 
     public WebDriver getDriver() {
-        String seleniumGridUrl = "http://localhost:4444";
-
-        String browserName = "chrome";
-        Platform platform = Platform.LINUX;
-
         URL url = null;
         try {
-            url = new URL(seleniumGridUrl);
+            url = new URL(getProperty("seleniumGridUrl"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setBrowserName(browserName);
-        desiredCapabilities.setPlatform(platform);
+        desiredCapabilities.setBrowserName(getProperty("browser"));
+        desiredCapabilities.setPlatform(Platform.valueOf(getProperty("platform")));
         desiredCapabilities.setCapability("pageLoadStrategy", PageLoadStrategy.NORMAL);
 
         WebDriver driver = new RemoteWebDriver(url, desiredCapabilities);
