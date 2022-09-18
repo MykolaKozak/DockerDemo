@@ -30,7 +30,11 @@ public class StartDocker {
         if (getProperty("env").equals("local")) {
             runFile(dockerUp); // docker up and scale chrome = 5
             waitForSec(waitTime);
+            System.out.println("----- LOCAL RUN ------");
         }
+        System.out.println("ENV: " + getProperty("env"));
+        System.out.println("BROWSER: " + getProperty("browserName"));
+        System.out.println("PLATFORM: " + getProperty("platform"));
     }
 
     @AfterSuite
