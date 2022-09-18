@@ -34,7 +34,7 @@ stages
                                                                                      script
                                                                                       {
                                                                                       config = readFile "src/main/java/config/properties.properties"
-                                                                                      newconfig = config.replaceAll("browserName=.*","browserName=${BROWSER_NAME}")
+                                                                                      newconfig = config.replaceAll("env=.*","env=${ENV}")
                                                                                       writeFile file: "src/main/java/config/properties.properties", text: "${newconfig}"
                                                                                       }
                                                                                  echo '<<------ RUN TESTS ------>>'

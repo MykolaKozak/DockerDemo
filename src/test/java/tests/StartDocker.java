@@ -27,15 +27,19 @@ public class StartDocker {
 
     @BeforeSuite
     public void startFile() throws IOException {
-        runFile(dockerUp); // docker up and scale chrome = 5
-        waitForSec(waitTime);
+        if (getProperty("env").equals("local")) {
+            runFile(dockerUp); // docker up and scale chrome = 5
+            waitForSec(waitTime);
+        }
     }
 
     @AfterSuite
     public void after() throws IOException {
-        runFile(dockerDown);
-        waitForSec(5);
-        waitForDockerIsDown(waitTime);
+        if (getProperty("env").equals("local")) {
+            runFile(dockerDown);
+            waitForSec(5);
+            waitForDockerIsDown(waitTime);
+        }
     }
 
     private void runFile(String filePath) throws IOException {
