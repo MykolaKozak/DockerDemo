@@ -11,7 +11,7 @@ public class AppTest_2 extends StartDocker {
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue2() {
+    public void test_2() {
         WebDriver driver = getDriver();
         driver.get("https://www.gmail.com/");
         System.out.println("Title: " + driver.getTitle());
