@@ -1,0 +1,1 @@
+docker inspect -f '{{.State.Status}}' selenium-hub >selenium-hub-status.txt

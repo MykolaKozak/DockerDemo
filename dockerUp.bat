@@ -1,1 +1,1 @@
-docker-compose -f docker-compose.yaml up >>docker_log.txt --scale chrome=5 -d
+docker-compose -f docker-compose.yaml up --scale chrome=5 >>docker_log.txt

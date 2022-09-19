@@ -3,9 +3,10 @@ package tests;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
+import static config.DockerConfig.getDriver;
 
-public class AppTest_1 extends StartDocker {
 
+public class AppTest_1 extends BaseTest{
 
 
     @Test

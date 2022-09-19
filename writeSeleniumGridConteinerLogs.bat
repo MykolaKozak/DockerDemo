@@ -1,0 +1,1 @@
+docker logs dockertest >seleniumGridLog.txt
